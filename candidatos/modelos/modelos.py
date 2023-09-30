@@ -8,9 +8,6 @@ class Candidato(db.Model):
     nombre = db.Column(db.String(50))
     profesion = db.Column(db.String(50))
     
-    def __repr__(self):
-        return "{}-{}".format(self.nombre, self.profesion)
-    
 class CandidatoSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = Candidato

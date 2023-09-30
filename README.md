@@ -20,4 +20,5 @@
 1. celery -A autenticador.tareas.tareas worker --loglevel=info -P eventlet
 
 ### Para correr la prueba en otra terminal ejecute
-1. python prueba.py
+1. cd prueba
+2. flask run -p 10000

@@ -9,7 +9,7 @@ celery_app = Celery(__name__, broker='redis://127.0.0.1:6379/0')
 candidato_schema = CandidatoSchema()
 
 class VistaCandidatosC(Resource):
-    @jwt_required
+    @jwt_required()
     def post(self):
         nuevo_candidato = Candidato(nombre=request.json['nombre'],\
                                 profesion=request.json['profesion'])
@@ -18,7 +18,7 @@ class VistaCandidatosC(Resource):
         return candidato_schema.dump(nuevo_candidato)
     
 class VistaCandidatoC(Resource):
-    @jwt_required
+    @jwt_required()
     def put(self, id_candidato):
         candidato = Candidato.query.get_or_404(id_candidato)
         candidato.nombre = request.json.get('nombre', candidato.nombre)

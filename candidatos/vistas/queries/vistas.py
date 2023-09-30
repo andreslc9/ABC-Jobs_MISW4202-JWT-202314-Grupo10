@@ -11,12 +11,13 @@ celery_app = Celery(__name__, broker='redis://127.0.0.1:6379/0')
 candidato_schema = CandidatoSchema()
 
 class VistaCandidatosQ(Resource):
-    @jwt_required
+    @jwt_required()
     def get(self):
-        return [candidato_schema.dump(candidato) for candidato in Candidato.query.all()]
+        candidatos = Candidato.query.all()
+        return [candidato_schema.dump(candidato) for candidato in candidatos],200
     
 class VistaCandidatoQ(Resource):
-    @jwt_required
+    @jwt_required()
     def get(self, id_candidato):
-        return candidato_schema.dump(Candidato.query.get_or_404(id_candidato))
+        return candidato_schema.dumps(Candidato.query.get_or_404(id_candidato)),200
     
