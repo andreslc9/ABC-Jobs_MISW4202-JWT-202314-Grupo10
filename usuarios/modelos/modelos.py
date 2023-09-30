@@ -7,6 +7,7 @@ class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     usuario = db.Column(db.String(50))
     contrasena = db.Column(db.String(50))
+    permisos = db.Column(db.Integer)
     
 class UsuarioSchema(SQLAlchemyAutoSchema):
     class Meta:

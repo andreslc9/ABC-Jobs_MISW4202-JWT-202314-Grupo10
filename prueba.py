@@ -20,11 +20,12 @@ def editar_candidato():
                 token_formateado = token['token']
                 print(token_formateado)
                 response_consulta = requests.get(consultar_candidato, headers={'Authorization':'Bearer {}'.format(token_formateado)})
-                
                 if response_consulta.status_code == 200:
                     print("Tiene permiso")
                 else:
                     print("No tiene permiso") 
+            else:
+                print("Sesión iniciada, sin permisos")
         else:
             print(f'Error:{response_ingreso.status_code}')
             print(response_ingreso.text)
